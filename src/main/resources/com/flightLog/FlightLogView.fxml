@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainPage" minHeight="0.0" minWidth="0.0" prefHeight="973.0" prefWidth="881.0" stylesheets="@mainCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.flightLog.controllers.stageController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2b2b2" height="101.0" layoutX="7.0" layoutY="44.0" opacity="0.06" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="30.0" strokeWidth="3.0" width="206.0">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Rectangle>
+      <TableView fx:id="tableLogs" layoutX="4.0" layoutY="245.0" prefHeight="296.0" prefWidth="873.0">
+         <columns>
+            <TableColumn fx:id="pilotNameTable" prefWidth="167.0" text="Pilot" />
+            <TableColumn fx:id="airFrameTable" prefWidth="106.0" text="AirFrame" />
+            <TableColumn fx:id="flightHoursTable" prefWidth="112.0" text="Flight Hours" />
+            <TableColumn fx:id="trapsTable" prefWidth="73.0" text="Traps" />
+            <TableColumn fx:id="missionTrapsTable" prefWidth="128.0" text="Mission Traps" />
+            <TableColumn fx:id="landingsTable" prefWidth="76.0" text="landings" />
+            <TableColumn fx:id="deathsTable" prefWidth="55.0" text="Deaths" />
+            <TableColumn fx:id="crashesTable" prefWidth="67.0" text="Crashes" />
+            <TableColumn fx:id="ejectionsTable" prefWidth="98.0" text="Ejections" />
+         </columns>
+         <contextMenu>
+            <ContextMenu>
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Details" />
+               </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+      <TextField fx:id="pilotName" layoutX="38.0" layoutY="82.0" promptText="Pilot Name" />
+      <Text layoutX="57.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Specific Pilot" />
+      <Button layoutX="86.0" layoutY="114.0" onAction="#onSearchPilot" text="Search" />
+      <RadioButton fx:id="airStartCheck" layoutX="55.0" layoutY="163.0" mnemonicParsing="false" text="Include Air Starts" />
+      <Button layoutX="76.0" layoutY="202.0" mnemonicParsing="false" onAction="#searchAll" text="Search All" />
+      <Text fx:id="logCount" layoutX="324.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="234.0" />
+      <Text layoutX="706.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drap and Drop Files Here" wrappingWidth="133.810546875" />
+      <GridPane layoutX="680.5" layoutY="20.5">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <ChoiceBox fx:id="logFiles" layoutX="698.0" layoutY="159.0" prefWidth="150.0" />
+      <Button fx:id="excludeLogButton" layoutX="698.0" layoutY="202.0" mnemonicParsing="false" onAction="#onExcludeButtonPressed" text="Exclude" />
+      <Button fx:id="removeLogButton" layoutX="789.0" layoutY="202.0" mnemonicParsing="false" onAction="#onRemoveButtonPressed" text="Remove" />
+      <Separator layoutX="222.0" layoutY="-6.0" orientation="VERTICAL" prefHeight="200.0" />
+      <Separator layoutX="667.0" layoutY="-6.0" orientation="VERTICAL" prefHeight="200.0" />
+      <Pane fx:id="titlePane" layoutY="-3.0" prefHeight="37.0" prefWidth="881.0" style="-fx-background-color: grey;">
+         <children>
+            <Button fx:id="exitButton" layoutX="844.0" layoutY="6.0" mnemonicParsing="false" onAction="#exitClicked" style="-fx-background-color: red;" />
+            <Button fx:id="restoreButton" layoutX="822.0" layoutY="6.0" mnemonicParsing="false" onAction="#restoreClicked" style="-fx-background-color: yellow;" stylesheets="@mainCss.css" />
+            <Button fx:id="minimizeButton" layoutX="798.0" layoutY="6.0" mnemonicParsing="false" onAction="#minimizeClicked" style="-fx-background-color: green;" stylesheets="@mainCss.css" />
+            <Text layoutX="380.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Airboss Flight Log Tool" />
+            <ImageView fitHeight="25.0" fitWidth="31.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/9112478_fighter_jet_solid_icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Rectangle fx:id="dropBox" arcHeight="5.0" arcWidth="5.0" fill="#d4ebe1" height="87.0" layoutX="679.0" layoutY="51.0" onDragDropped="#handleDragDropped" onDragOver="#mouseDragOver" opacity="0.46" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeMiterLimit="30.0" width="186.0" />
+      <TableView fx:id="trapLogsTable" layoutX="109.0" layoutY="541.0" prefHeight="432.0" prefWidth="663.0">
+        <columns>
+          <TableColumn fx:id="trapAVGPilotName" prefWidth="187.0" text="Pilot" />
+          <TableColumn fx:id="trapAVGTraps" prefWidth="76.0" text="Traps" />
+            <TableColumn fx:id="trapAVGT" prefWidth="88.0" text="Trap AVG" />
+            <TableColumn fx:id="trapAVGBoarding" prefWidth="106.0" text="Boarding AVG" />
+            <TableColumn fx:id="trapAVGWire" prefWidth="106.0" text="Wire AVG" />
+            <TableColumn fx:id="trapAVGGroove" prefWidth="99.0" text="Groove AVG" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

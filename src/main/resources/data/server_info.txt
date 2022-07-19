@@ -1,0 +1,2 @@
+
++ VNAO CVW-7 Warfighter, hostname: 71.93.150.60, ip: 71.93.150.60, DCS(10308): UP, SRS(5002): UP, LotATC(10310): UP
